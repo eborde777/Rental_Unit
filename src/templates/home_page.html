@@ -1,1 +1,13 @@
-<h1>HOME</h1>
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+    <h1 class="display-3">Browse & Find the best palce for you based on your requirements</h1>
+    <p>Enter zip codes and see the available rental places near you.</p>
+    <form>
+            <input class="form-control form-control-lg mysearch" type="text" placeholder="Search By city or zip code">
+            <p><a class="btn btn-primary btn-lg mybtn" href="#" role="button">Learn more &raquo;</a></p>
+    </form>
+    
+  </div>
+{% endblock %}

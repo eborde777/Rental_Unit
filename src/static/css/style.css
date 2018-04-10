@@ -1,0 +1,29 @@
+.mynavbgcolor {
+    background-color:#b71540;
+}
+
+.nav-link {
+    color: black;
+}
+
+.logo {
+    width: 70%;
+    height: auto;
+}
+
+.mybtn{
+    background-color:	#C54366;
+    border-color:	#C54366;
+    margin-top: 2em;
+    margin-left: 40%;
+}
+
+.mysearch{
+    margin-top: 2em;
+}
+
+.mybtn:hover{
+    background-color:	#b71540;
+    border-color:	#b71540;
+}
+
