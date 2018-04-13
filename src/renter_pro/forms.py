@@ -41,8 +41,11 @@ class RegistrationForm(forms.ModelForm):
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
+        email_exists = User.objects.filter(email=email).exists()
         if "@" not in email:
             raise forms.ValidationError("Enter valid email address")
+        elif email_exists:
+            raise forms.ValidationError("Email Already exists, choose another email.")
         else:
             name, domain = email.split('@')
             if domain not in domains:
