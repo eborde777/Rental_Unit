@@ -19,14 +19,15 @@ from django.urls import path
 from django.conf.urls.static import static
 
 from .views import (
-
     home_page,
     login_view,
     logout_view,
-    register_view,
     about_view,
     contact_view,
+    register_view
 )
+
+# from Registration.views import register_view
 
 urlpatterns = [
     path('admin/', admin.site.urls),

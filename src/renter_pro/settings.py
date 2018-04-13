@@ -39,6 +39,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    #third party apps
+    'bootstrap4',
+    #myapps
+
 ]
 
 MIDDLEWARE = [
@@ -133,3 +138,9 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), 'media_cdn')
+
+
+# Subsituting default User model with our Signup Model
+# Refer this link: https://docs.djangoproject.com/en/2.0/topics/auth/customizing/#auth-custom-user
+
+# AUTH_USER_MODEL = 'Registration.SignUp'
