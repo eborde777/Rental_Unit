@@ -34,7 +34,7 @@ class RegistrationForm(forms.ModelForm):
     def clean_confirm_password(self):
         password1 = self.cleaned_data.get('password')
         password2 = self.cleaned_data.get('confirm_password')
-        
+
         if password1 != password2:
             raise forms.ValidationError("Password Doesn't Match")
         return password2
@@ -46,7 +46,7 @@ class RegistrationForm(forms.ModelForm):
         else:
             name, domain = email.split('@')
             if domain not in domains:
-                raise forms.ValidationError("Email address not registered, please use different email address")
+                raise forms.ValidationError("Email address has incorrect domain, please use different email address")
         return email
 
 
