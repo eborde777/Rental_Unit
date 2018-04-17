@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     #third party apps
     'bootstrap4',
     #myapps
+    'contacts',
+    'rental_ads',
 
 ]
 

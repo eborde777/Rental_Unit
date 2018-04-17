@@ -7,7 +7,7 @@ from .email_domain_list import domains
 
 
 class RegistrationForm(forms.ModelForm):
-    password_text = 'Minimum 8 character length. Must contain atleast one capital leter, number and special characters'
+    password_text = 'Minimum 6 character length.'
     confirm_password = forms.CharField(widget=forms.PasswordInput(), max_length=120)
     password         = forms.CharField(widget=forms.PasswordInput(), max_length=120, help_text=password_text)
 
@@ -37,6 +37,8 @@ class RegistrationForm(forms.ModelForm):
 
         if password1 != password2:
             raise forms.ValidationError("Password Doesn't Match")
+        if len(password1) < 6:
+            raise forms.ValidationError("Minimum length is 6 characters")
         return password2
 
     def clean_email(self):

@@ -15,15 +15,15 @@ Including another URLconf
 """
 from django.conf import settings
 from django.contrib import admin
-from django.urls import path
+from django.urls import include, path
 from django.conf.urls.static import static
 
+from contacts.views import contact_view 
 from .views import (
     home_page,
     login_view,
     logout_view,
     about_view,
-    contact_view,
     register_view
 )
 
@@ -37,6 +37,7 @@ urlpatterns = [
     path('register/', register_view, name = "register_page"),
     path('about/', about_view, name = 'about_page'),
     path('contact/', contact_view, name = 'contact_page'),
+    path('posts/', include('posts.urls')),
 ]
 
 if settings.DEBUG:

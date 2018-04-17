@@ -1,0 +1,2 @@
+US zip, state and city data is downloaded from:
+http://download.geonames.org/export/zip/
