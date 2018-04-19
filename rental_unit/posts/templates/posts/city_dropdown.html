@@ -1,0 +1,6 @@
+<input list="cities" name="cities">
+<datalist id="cities">
+{% for city in cities %}
+  <option value=" {{ city.pk }}">{{ city.city }}</option>
+{% endfor %}
+</datalist>

@@ -1,0 +1,67 @@
+{% load static %}
+{% url "home_page" as home_url %}
+<!-- {% url "paying_guests_page" as paying_guests_url %} -->
+{% url "about_page" as about_url %}
+{% url "contact_page" as contact_url %}
+{% url "login_page" as login_url %}
+{% url "register_page" as register_url %}
+{% url "logout_page" as logout_url %}
+<!-- {% url "home_page" as home_url %}
+{% url "home_page" as home_url %} -->
+<nav class="navbar navbar-expand-md navbar-dark fixed-top mynavbgcolor">
+        <a class="navbar-brand" href="#">
+            <img class='logo' src="{% static 'img/test.jpg' %}" alt="LOGO"/>
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+  
+        <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item {% if request.path == home_url %}active{% endif %}">
+              <a class="nav-link" href="{{home_url}}">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item {% if request.path == about_url %}active{% endif %}">
+              <a class="nav-link" href="{{about_url}}">About</a>
+            </li>
+            <li class="nav-item {% if request.path == home_url %}active{% endif %}">
+              <a class="nav-link" href="#">Paying Guests</a>
+            </li>
+            <li class="nav-item {% if request.path == home_url %}active{% endif %}">
+                    <a class="nav-link" href="#">Roommates</a>
+            </li>
+            <li class="nav-item dropdown {% if request.path == home_url %}active{% endif %}">
+              <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Rentals</a>
+              <div class="dropdown-menu" aria-labelledby="dropdown01">
+                <a class="dropdown-item" href="#">Apartments</a>
+                <a class="dropdown-item" href="#">House</a>
+                <a class="dropdown-item" href="#">Condo</a>
+              </div>
+            </li>
+
+            <li class="nav-item {% if request.path == contact_url %}active{% endif %}">
+                    <a class="nav-link" href="{{contact_url}}">Contact</a>
+            </li>
+
+            <li class="nav-item">
+                    <a class="nav-link" href="#"><button class="btn btn-warning btn-sm">Post AD</button></a>
+             </li>
+          </ul>
+          <ul class="navbar-nav my-2 my-lg-0">
+            {% if not request.user.is_authenticated %}
+                  <li class="nav-item {% if request.path == login_url %}active{% endif %} ">
+                          <a class="nav-link" href="{{login_url}}">Login <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item {% if request.path == register_url %}active{% endif %}">
+                          <a class="nav-link" href="{{register_url}}">Register</a>
+                        </li>
+            {% else %}
+                        <li class="nav-item active">
+                          <a class="nav-link" href="{{logout_url}}">Logout</a>
+
+            {% endif %}
+                  </li>
+          </ul>
+          
+        </div>
+      </nav>

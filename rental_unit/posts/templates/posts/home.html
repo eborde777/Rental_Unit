@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+{% block content %}
+
+<div class="container">
+  <form method="POST" class="form">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4 mt-3">
+                {% buttons %}
+                <button type="submit" class="btn btn-primary btn-lg btn-block">Add Post</button>
+            {% endbuttons %}
+        </div>
+    
+        <div class="col-sm-4"></div>
+  </div>
+  </form>
+  
+</div>
+
+ 
+
+{% endblock %}
+
+
+<!-- <input list="states" name="states">
+<datalist id="states">
+{% for state in states %}
+  <option value=" {{ state.state }}">
+{% endfor %}
+</datalist> -->

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+  <style>
+  .jumbotron{
+        background-image: linear-gradient(rgba(0, 0, 0, 0.80), rgba(0, 0, 0, 0.40) ), url("{% static 'img/jumbotron.jpg'%}");
+        background-size: cover;
+        background-position: center;
+        color:#f2f2f2;
+      }
+  </style>
+    
+{% endblock %}
+
+{% block content %}
+<div class="container text-center">
+    <h1 class="display-3 mt-5">Browse & Find the best palce for you based on your requirements</h1>
+    <p class="mt-3">Enter zip codes and see the available rental places near you.</p>
+    <form>
+            <input class="form-control form-control-lg  mt-5" type="text" placeholder="Search By city or zip code">
+            <p><a class="btn btn-primary btn-lg mt-5 mybtn" href="#" role="button">Search</a></p>
+    </form>
+    
+  </div>
+{% endblock %}

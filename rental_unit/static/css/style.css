@@ -1,0 +1,23 @@
+.mynavbgcolor {
+    background-color:#b71540;
+}
+
+.nav-link {
+    color: black;
+}
+
+.logo {
+    width: 70%;
+    height: auto;
+}
+
+.mybtn{
+    background-color:	#C54366;
+    border-color:	#C54366;
+}
+
+.mybtn:hover{
+    background-color:	#b71540;
+    border-color:	#b71540;
+}
+

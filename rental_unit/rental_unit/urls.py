@@ -37,7 +37,9 @@ urlpatterns = [
     path('register/', register_view, name = "register_page"),
     path('about/', about_view, name = 'about_page'),
     path('contact/', contact_view, name = 'contact_page'),
-    path('posts/', include('rental_ads.urls')),
+    path('posts/', include('posts.urls')),
+    # smart-select pakage url
+    path('chaining/', include('smart_selects.urls')),
 ]
 
 if settings.DEBUG:

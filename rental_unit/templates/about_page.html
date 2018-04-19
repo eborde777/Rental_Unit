@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block style %}
+    <style>
+        .about-img {
+            height:auto;
+            width: 70%;
+            float:left;
+        }
+
+
+    </style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="container">
+            <h1>About</h1>
+        <div class="row">
+            <div class="col-md-12">
+                <img class ="about-img pr-3 pb-3" src="{% static 'img/jumbo1.jpg' %}" alt="about pic"/>
+            
+                <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vitae turpis tristique, feugiat nibh quis, pretium ipsum. Donec vehicula vitae risus sed efficitur. In lacinia ac est nec ultricies. Vivamus pharetra gravida magna eu pharetra. Proin euismod, neque vel efficitur aliquam, ex felis iaculis urna, at sollicitudin metus arcu quis metus. Maecenas aliquam enim in lectus viverra suscipit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut magna eros, placerat quis molestie iaculis, congue ut magna. Quisque et erat quis mi bibendum lobortis ut sollicitudin metus. Aliquam mollis aliquam ex a rhoncus. In pellentesque erat quis urna porttitor, et pharetra lorem condimentum. Maecenas ornare, turpis sed pellentesque dignissim, orci nibh egestas ex, quis commodo diam turpis eget tellus. Nullam pulvinar libero a lobortis egestas. Vestibulum quis enim ac elit pharetra rutrum. Nunc id purus dolor.
+
+                        Nam vel maximus nunc, ac varius augue. Sed lobortis et mauris ac mollis. Donec faucibus facilisis sodales. Phasellus id porta nulla. Vestibulum faucibus non ex eu consectetur. Quisque suscipit egestas nibh, quis feugiat massa sodales vel. In nec mollis turpis, a laoreet ipsum. Mauris aliquam, ligula ac euismod gravida, libero quam consectetur eros, et fringilla nulla dui eu tellus. Aenean efficitur velit eget scelerisque laoreet. Nullam eu egestas enim. Fusce sed justo vehicula, luctus diam vel, tempor elit. In consequat justo nulla, nec placerat erat aliquet vitae. Suspendisse tempor faucibus est id venenatis. Donec sagittis augue sit amet semper placerat. Morbi a odio malesuada, scelerisque neque non, dignissim magna. Donec non elit laoreet, consectetur nisi quis, mollis mauris.
+                        
+                        Curabitur aliquam enim et consectetur commodo. Ut ipsum augue, consequat nec pharetra tincidunt, faucibus eget massa. Maecenas mattis laoreet bibendum. Proin feugiat ex eget odio vehicula, vel dapibus metus aliquet. Maecenas venenatis at quam sed pulvinar. Sed et tellus faucibus massa posuere euismod varius in sapien. Mauris erat velit, malesuada vel sollicitudin ac, tincidunt a velit.
+                        
+                        Maecenas ac purus eu ligula varius auctor. Quisque quis justo quis arcu porta semper. Aenean dignissim efficitur rhoncus. Sed nec sodales orci. Quisque tincidunt quam erat, a suscipit nulla dignissim non. Sed consectetur suscipit purus, quis mollis magna egestas sed. Duis diam odio, aliquam ut nunc a, semper pharetra lectus. Sed massa orci, sollicitudin sed venenatis et, aliquet ac mi.
+                        
+                        Ut sed velit at nisi faucibus rutrum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aliquam erat volutpat. Sed molestie, lacus porttitor euismod imperdiet, mauris ipsum ullamcorper libero, ac tincidunt ex mauris ut tortor. Sed luctus ac purus vestibulum imperdiet. Aenean dignissim tellus a massa tristique finibus. In consequat sapien eget dolor eleifend, a faucibus ligula aliquam.
+                </p>
+        </div>
+    </div>
+{% endblock %}
+
