@@ -1,7 +1,9 @@
 from django.shortcuts import render
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
-from django.urls import reverse_lazy 
-from .models import Post, City
+from django.urls import reverse_lazy
+from dal import autocomplete
+
+from .models import Post, City, State
 
 from .forms import PostForm
 
@@ -10,15 +12,17 @@ from .forms import PostForm
 class PostCreateView(CreateView):
     model = Post
     form_class = PostForm
-    success_url = reverse_lazy('posts:post_detail')
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse_lazy('posts:post_detail', kwargs={'slug': self.object.slug})
 
 class PostDetailView(DetailView):
     model = Post
 
     def get_context_data(self, *args, **kwargs):
         context = super().get_context_data(*args, **kwargs)
-        instance_id = self.kwargs.get('pk')
-        post_obj = Post.objects.get(id=instance_id)
+        slug = self.kwargs.get('slug')
+        post_obj = Post.objects.get(slug=slug)
         context['post']  = post_obj
         return context
 
@@ -42,12 +46,39 @@ class PostListView(ListView):
 
 class PostUpdateView(UpdateView):
     model = Post
-    fields = ('title', 'new_state', 'citites')
+    fields = ('title', 'new_state', 'cities')
     success_url = reverse_lazy('post_changeList')
 
 
+# Manual process to load cities based on State using Ajax, look at post_form.html
+# def load_cities(request):
+#     state_id = request.GET.get('state')
+#     cities = City.objects.filter(state_id=state_id).order_by('city')
+#     return render(request, 'posts/city_dropdown.html', {'cities':cities})
+
+
 # load cities based on State using Ajax, look at post_form.html
-def load_cities(request):
-    state_id = request.GET.get('state')
-    cities = City.objects.filter(state_id=state_id).order_by('city')
-    return render(request, 'posts/city_dropdown.html', {'cities':cities})
+class CityAutoComplete(autocomplete.Select2QuerySetView):
+
+    
+    def get_queryset(self):
+        city_qs = City.objects.all()
+        state = self.forwarded.get('state')
+        if state:
+            city_qs = city_qs.filter(state = state)
+            if self.q:
+                city_qs = city_qs.filter(city__istartswith=self.q)
+        else:
+            city_qs = None
+        return city_qs
+
+# Below is just creating choice field to datalist on our form
+class StateAutoComplete(autocomplete.Select2QuerySetView):
+    
+    def get_queryset(self):
+        state_qs = State.objects.all()
+       
+        if self.q:
+            state_qs = state_qs.filter(state__istartswith=self.q)
+
+        return state_qs

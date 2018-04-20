@@ -6,8 +6,8 @@
 {% url "login_page" as login_url %}
 {% url "register_page" as register_url %}
 {% url "logout_page" as logout_url %}
-<!-- {% url "home_page" as home_url %}
-{% url "home_page" as home_url %} -->
+{% url "posts:post_add" as add_post %}
+<!-- {% url "home_page" as home_url %} -->
 <nav class="navbar navbar-expand-md navbar-dark fixed-top mynavbgcolor">
         <a class="navbar-brand" href="#">
             <img class='logo' src="{% static 'img/test.jpg' %}" alt="LOGO"/>
@@ -44,7 +44,7 @@
             </li>
 
             <li class="nav-item">
-                    <a class="nav-link" href="#"><button class="btn btn-warning btn-sm">Post AD</button></a>
+                    <a class="nav-link" href="{{ add_post }}"><button class="btn btn-warning btn-sm">Post AD</button></a>
              </li>
           </ul>
           <ul class="navbar-nav my-2 my-lg-0">

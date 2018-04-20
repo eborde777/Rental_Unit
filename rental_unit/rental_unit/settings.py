@@ -42,6 +42,10 @@ INSTALLED_APPS = [
 
     #third party apps
     'bootstrap4',
+    #below to apps will help us with forms like dependent dropdown list
+    'dal',
+    'dal_select2',
+    
     #myapps
     'contacts',
     'posts',

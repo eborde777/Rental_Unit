@@ -5,7 +5,8 @@
 
 
 <div class="container">
-    <form method="POST" class="form" id="postForm" data-cities-url = "{% url 'posts:ajax_load_cities' %}" novalidate>
+    <h1 class="text-center mt-5 form-signin-heading">Post your Ad</h1>
+    <form method="POST" class="form mt-3" id="postForm" >
       {% csrf_token %}
       {% bootstrap_form form %}
       <div class="row">
@@ -24,34 +25,42 @@
 
 {% endblock %}
 
-<!-- below piece of code obtained from 
+<!-- below piece of code used from 
 https://simpleisbetterthancomplex.com/tutorial/2018/01/29/how-to-implement-dependent-or-chained-dropdown-list-with-django.html -->
 {% block script %}
 
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  
-<script>
-    $(document).ready(function(){
-    $("#id_citites").prop("disabled", true); 
-    
-});
-$("#id_new_state").change(function () {
-    var url = $("#postForm").attr("data-cities-url");  // get the url of the `load_cities` view
-    var countryId = $(this).val();  // get the selected country ID from the HTML input
 
-    $.ajax({                       // initialize an AJAX request
-      url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
-      data: {
-        'state': countryId       // add the country id to the GET parameters
-      },
-      success: function (data) {   // `data` is the return of the `load_cities` view function
-        $("#id_citites").html(data);  // replace the contents of the city input with the data that came from the server
-        $("#id_citites").prop("disabled", false);
-      }
-    });
+{{ form.media }}
 
-  });  
-    
-</script>
 
 {% endblock %}
+
+<!-- Below is a manual ajax code for dependent dropdown list -->
+<!-- <form method="POST" class="form" id="postForm" data-cities-url = "{% url 'posts:ajax_load_cities' %}" novalidate></form> -->
+<!-- <script>
+  $(document).ready(function(){
+
+  $("#id_cities").prop("disabled", true); 
+
+  $("#id_new_state").change(function () {
+  var url = $("#postForm").attr("data-cities-url");  // get the url of the `load_cities` view
+  var countryId = $(this).val();  // get the selected country ID from the HTML input
+
+  $.ajax({                       // initialize an AJAX request
+    url: url,                    // set the url of the request (= localhost:8000/hr/ajax/load-cities/)
+    data: {
+      'state': countryId       // add the country id to the GET parameters
+    },
+    success: function (data) {   // `data` is the return of the `load_cities` view function
+      $("#id_cities").html(data);  // replace the contents of the city input with the data that came from the server
+      $("#id_cities").prop("disabled", false);
+    }
+  });
+
+});  
+  
+});
+
+  
+</script> -->
