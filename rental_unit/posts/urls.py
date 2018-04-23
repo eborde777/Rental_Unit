@@ -7,7 +7,7 @@ urlpatterns = [
     path('', views.PostListView.as_view(), name='post_changeList'),
     path('add/', views.PostCreateView.as_view(), name='post_add'),
     path('detail/<slug:slug>/', views.PostDetailView.as_view(), name = 'post_detail'),
-    path('<slug:slug>/', views.PostUpdateView.as_view(), name = 'post_change'),
+    path('edit/<slug:slug>/', views.PostUpdateView.as_view(), name = 'post_change'),
 
     # this is the url which will be loaded by ajax calls
     # path('ajax/load-cities', views.load_cities, name='ajax_load_cities'),

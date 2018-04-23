@@ -1,2 +1,120 @@
-{{ post.id }}
-{{ post.title }}
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <div class="container">
+    <h1>{{ post.title|title }}</h1>
+    <p>Post ID: {{ post.unique_post_id }}, Posted: {{ post.posted_on|timesince  }} ago</p>
+    <small>Location: {{post.address}} {{post.address2}}, {{post.cities}}, {{post.state}}, {{post.zip_code}}</small>
+    <p class="mt-3">{{ post.description }} </p>
+
+<h3 class="mt-4">Rental Details:</h3>
+    <div class="row">
+        <div class="col-sm-6">
+                <table class="table table-striped">
+                        
+                        <tbody>
+                                <tr>
+                                        <th scope="row">Posted by</th>
+                                        <td>{{ post.posted_by  }}</td>
+                                        
+                                      </tr>
+                          <tr>
+                            <th scope="row">Rental Type</th>
+                            <td>{{ post.rental_type }}</td>
+                            
+                          </tr>
+                          <tr>
+                            <th scope="row">Address</th>
+                            <td>{{ post.address }} {{ post.address2 }}</td>
+                           
+                          </tr>
+                          <tr>
+                            <th scope="row">Location</th>
+                            <td> {{ post.cities }}, {{ post.state }}</td>
+                          </tr>
+                          <tr>
+                                <th scope="row">Zip Code</th>
+                                <td>  {{ post.zip_code }}</td>
+                              </tr>
+                              <tr>
+                                    <th scope="row">Attached Bath</th>
+                                    <td>  {{ post.attached_bath }}</td>
+                                  </tr>
+                                  <tr>
+                                        <th scope="row">Available from</th>
+                                        <td>{{ post.available_from }}</td>
+                                      </tr>
+                                 
+                        </tbody>
+                       
+                      </table>
+        </div>
+        <div class="col-sm-6">  
+                <table class="table table-striped">
+                        
+                        <tbody>
+                          <tr>
+                                <th scope="row">Preferred Gender</th>
+                                <td>{{ post.preferred_gender }}</td>
+                              </tr>
+                          <tr>
+                            <th scope="row">Accomodates</th>
+                            <td> {{ post.accomodates }}</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">Expected Rent</th>
+                            <td class='font-weight-bold'>$ {{ post.expected_rent }}</td>
+                          </tr>
+                          <tr>
+                                <th scope="row">Lease Type</th>
+                                <td class='font-weight-bold'>{{ post.lease_type }}</td>
+                              </tr>
+                              <tr>
+                                    <th scope="row">Veg/Non-Veg </th>
+                                    <td>  {{ post.pet_friendly }}</td>
+                                  </tr>
+                              <tr>
+                                    <th scope="row">Smoking</th>
+                                    <td>{{ post.smoke_policy }}</td>
+                                  </tr>
+
+                                  <tr>
+                                        <th scope="row">Pets</th>
+                                        <td>{{ post.smoke_policy }}</td>
+                                      </tr>
+                              
+                            </tbody>
+                        </tbody>
+                        
+                      </table>
+            </div>
+    </div>
+
+
+    <h3>Amenities</h3>
+   
+        {{ post.amenities }}
+     
+    <h3>Furniture details</h3>
+    {{ post.furnishing_details }} <br/>
+    
+</div>
+
+
+{% endblock %}
+
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            

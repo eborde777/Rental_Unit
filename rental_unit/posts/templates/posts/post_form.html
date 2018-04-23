@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
-
+{% load static %}
 {% block content %}
 
 
@@ -13,7 +13,7 @@
           <div class="col-sm-4"></div>
           <div class="col-sm-4 mt-3">
                   {% buttons %}
-                  <button type="submit" class="btn btn-primary btn-lg btn-block">Add Post</button>
+                  <button type="submit" class="btn btn-primary btn-lg btn-block">{{ button_name }} Post</button>
               {% endbuttons %}
           </div>
       
@@ -29,7 +29,7 @@
 https://simpleisbetterthancomplex.com/tutorial/2018/01/29/how-to-implement-dependent-or-chained-dropdown-list-with-django.html -->
 {% block script %}
 
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="{% static 'vendor/js/jquery-3.3.1.js' %}"></script>
 
 {{ form.media }}
 

@@ -13,7 +13,25 @@ class PostForm(forms.ModelForm):
     #     empty_label=None,
     #     widget=autocomplete.ModelSelect2(url='posts:state-autocomplete')
     # )
+    AMENITIES_CHOICE = (
+    ('Gym', 'Gym'),
+    ('Swimming Pool', 'Swimming Pool'),
+    ('Trash', 'Trash'),
+    ('Tennis Court', 'Tennis Court'),
+    ('Vollyball Court', 'Vollyball Court')
+)
+
+    FURNITURE_CHOICE = (
+        ('table', 'table'),
+        ('chair', 'chairl'),
+        ('sofa', 'sofa'),
+        ('study table', 'study table'),
+        ('Bed', 'Bed')
+    )
+
     available_from = forms.DateField(widget=forms.SelectDateWidget())
+    amenities = forms.MultipleChoiceField(choices=AMENITIES_CHOICE, widget=forms.CheckboxSelectMultiple())
+    furnishing_details = forms.MultipleChoiceField(choices=FURNITURE_CHOICE, widget=forms.CheckboxSelectMultiple())
     
     class Meta:
         model = Post
@@ -28,8 +46,16 @@ class PostForm(forms.ModelForm):
             'available_from', 
             'accomodates', 
             'expected_rent' ,
+            'attached_bath',
+            'preferred_gender',
+            'lease_type',
+            'amenities',
+            'smoke_policy',
+            'veg_non_veg_preference',
+            'pet_friendly',
+            'furnishing_details',
             'posted_by', 
-            'description' ,
+            'description',
         ]
         widgets = {
             'state': autocomplete.ModelSelect2(url='posts:state-autocomplete', attrs={'data-placeholder': 'State',}),
