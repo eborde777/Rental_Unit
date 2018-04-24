@@ -1,3 +1,12 @@
+body{
+    font-weight: bolder;
+}
+
+.verticalAlign{
+    display: -webkit-inline-box;
+    margin-left: 1%;
+}
+
 .mynavbgcolor {
     background-color:#b71540;
 }

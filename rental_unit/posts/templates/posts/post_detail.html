@@ -93,11 +93,29 @@
 
 
     <h3>Amenities</h3>
-   
-        {{ post.amenities }}
+    <div class="row">
+      
+          {% for i in amenities %}
+          <div class="col-sm-2">
+              {{ i }} 
+          </div>
+         
+        {% endfor %}
+    </div>
+        
+        
      
     <h3>Furniture details</h3>
-    {{ post.furnishing_details }} <br/>
+    <div class="row">
+      
+        {% for i in furnishing_details %}
+        <div class="col-sm-2">
+            {{ i }} 
+        </div>
+       
+      {% endfor %}
+  </div>
+   
     
 </div>
 

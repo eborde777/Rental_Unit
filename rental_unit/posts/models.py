@@ -7,13 +7,7 @@ from django.dispatch import receiver
 from rental_unit.utils import generate_unique_post_id_and_slug 
 # Create your models here.
 
-RENTAL_CHOICES = (
-    ('Paying Guest', 'Paying Guest'),
-    ('Roommate', 'Roommate'),
-    ('Condo', 'Condo'),
-    ('House', 'House'),
-    ('Apartment', 'Apartment')
-)
+
 
 GENDER_CHOICE = (
     ('male', "Male"),('female', "Female"), ('any', 'Any' )
@@ -23,10 +17,6 @@ LEASE_CHOICE = (
     ("monthly", "Monthly"), ("three months", "Three Months"),
     ("six months", "Six Months"), ("nine months", "Nine Months"),
     ("one year", 'One Year')
-)
-
-SMOKING_CHOICE = (
-    ("yes", "YES"), ("no", "NO"), ("outside only", "OUTSIDE ONLY")
 )
 
 PET_CHOICE = (
@@ -62,7 +52,7 @@ class City(models.Model):
 
 
 class Post(models.Model):
-    rental_type  = models.CharField(max_length = 50, blank=True, null=True, choices=RENTAL_CHOICES)
+    rental_type  = models.CharField(max_length = 50, blank=True, null=True)
     title = models.CharField(max_length = 500)
     unique_post_id = models.CharField(max_length=10, blank=True, unique=True)
     slug = models.SlugField(blank=True, unique=True)
@@ -82,7 +72,7 @@ class Post(models.Model):
     preferred_gender = models.CharField(max_length=10, choices=GENDER_CHOICE)
     lease_type = models.CharField(max_length=200, choices = LEASE_CHOICE)
     amenities = models.CharField(max_length=500)
-    smoke_policy = models.CharField(max_length=100, choices= SMOKING_CHOICE)
+    smoke_policy = models.CharField(max_length=100)
     veg_non_veg_preference = models.CharField(max_length=200)
     pet_friendly = models.CharField(max_length=5, choices = PET_CHOICE)
     furnishing_details = models.CharField(max_length=200)

@@ -1,8 +1,12 @@
 {% extends 'base.html' %}
 {% load bootstrap4 %}
 {% load static %}
-{% block content %}
 
+{% block style %}
+<link rel="stylesheet" href="{% static 'vendor/css/jquery-ui.min.css' %}">
+{% endblock %}
+
+{% block content %}
 
 <div class="container">
     <h1 class="text-center mt-5 form-signin-heading">Post your Ad</h1>
@@ -31,7 +35,26 @@ https://simpleisbetterthancomplex.com/tutorial/2018/01/29/how-to-implement-depen
 
 <script src="{% static 'vendor/js/jquery-3.3.1.js' %}"></script>
 
-{{ form.media }}
+{{ form.media }} <!--required for autocomplete app -->
+
+<!-- adding jquery ui widgets to our form-->
+<script
+  src="{% static 'vendor/js/jquery-ui.min.js' %}"></script>
+<script>
+  $('#id_available_from').datepicker();
+
+  $( "input[type='checkbox'], input[type='radio']" ).checkboxradio();
+
+  $('#id_amenities,\
+     #id_furnishing_details,\
+     #id_smoke_policy, \
+     #id_rental_type, \
+     #id_attached_bath, \
+     #id_preferred_gender, \
+     #id_pet_friendly').css({"display":"-webkit-inline-box", "margin-left":"1%"});
+
+  $('.checkbox, .radio').css("padding", "1%");
+</script>
 
 
 {% endblock %}

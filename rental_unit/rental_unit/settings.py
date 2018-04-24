@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    # 'suit', # this third party app helps us get calendar widget, it must be added before admin
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

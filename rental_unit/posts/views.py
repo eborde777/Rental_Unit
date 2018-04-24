@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, Http404
 from django.views.generic import CreateView, DetailView, ListView, UpdateView
 from django.urls import reverse_lazy
 from dal import autocomplete
+import ast # abstract syntax tree
 
 from .models import Post, City, State
 
@@ -24,6 +25,13 @@ class PostCreateView(CreateView):
 class PostDetailView(DetailView):
     model = Post
     context_object_name = 'post'
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        object = self.get_object()
+        context['amenities'] = ast.literal_eval(object.amenities)
+        context['furnishing_details'] = ast.literal_eval(object.furnishing_details)
+        return context
 
     def get_object(self, *args, **kwargs):
         slug = self.kwargs.get('slug')

@@ -13,6 +13,15 @@ class PostForm(forms.ModelForm):
     #     empty_label=None,
     #     widget=autocomplete.ModelSelect2(url='posts:state-autocomplete')
     # )
+
+    RENTAL_CHOICES = (
+    ('Paying Guest', 'Paying Guest'),
+    ('Roommate', 'Roommate'),
+    ('Condo', 'Condo'),
+    ('House', 'House'),
+    ('Apartment', 'Apartment')
+)
+
     AMENITIES_CHOICE = (
     ('Gym', 'Gym'),
     ('Swimming Pool', 'Swimming Pool'),
@@ -29,7 +38,29 @@ class PostForm(forms.ModelForm):
         ('Bed', 'Bed')
     )
 
-    available_from = forms.DateField(widget=forms.SelectDateWidget())
+    SMOKING_CHOICE = (
+    ("yes", "YES"), ("no", "NO"), ("outside only", "OUTSIDE ONLY")
+)
+
+    GENDER_CHOICE = (
+        ('male', "Male"),('female', "Female"), ('any', 'Any' )
+    )
+    PET_CHOICE = (
+        ("yes", "YES"), ("no", "NO")
+    )
+
+    BATH_CHOICE = (
+        ("yes", "YES"), ("no", "NO")
+    )
+
+
+
+    # available_from = forms.DateField(widget=forms.SelectDateWidget())
+    rental_type = forms.CharField(widget=forms.RadioSelect(choices=RENTAL_CHOICES))
+    attached_bath = forms.CharField(widget=forms.RadioSelect(choices=BATH_CHOICE))
+    preferred_gender = forms.CharField(widget=forms.RadioSelect(choices=GENDER_CHOICE))
+    pet_friendly = forms.CharField(widget=forms.RadioSelect(choices=PET_CHOICE))
+    smoke_policy = forms.CharField(widget=forms.RadioSelect(choices=SMOKING_CHOICE))
     amenities = forms.MultipleChoiceField(choices=AMENITIES_CHOICE, widget=forms.CheckboxSelectMultiple())
     furnishing_details = forms.MultipleChoiceField(choices=FURNITURE_CHOICE, widget=forms.CheckboxSelectMultiple())
     
@@ -58,6 +89,7 @@ class PostForm(forms.ModelForm):
             'description',
         ]
         widgets = {
+            # 'smoke_policy': forms.RadioSelect(),
             'state': autocomplete.ModelSelect2(url='posts:state-autocomplete', attrs={'data-placeholder': 'State',}),
             'cities': autocomplete.ModelSelect2(url = 'posts:city-autocomplete',
                                                  forward=['state'], 
