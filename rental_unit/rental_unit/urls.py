@@ -30,6 +30,7 @@ from .views import (
 # from Registration.views import register_view
 
 urlpatterns = [
+    path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
     path('', home_page, name='home_page'),
     path('login/', login_view, name='login_page'),

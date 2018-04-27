@@ -34,6 +34,10 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # 'suit', # this third party app helps us get calendar widget, it must be added before admin
+    #below two apps will help us with forms like dependent dropdown list
+    'dal',
+    'dal_select2',
+    # 'grappelli',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,9 +47,8 @@ INSTALLED_APPS = [
 
     #third party apps
     'bootstrap4',
-    #below to apps will help us with forms like dependent dropdown list
-    'dal',
-    'dal_select2',
+    
+
     
     #myapps
     'contacts',
